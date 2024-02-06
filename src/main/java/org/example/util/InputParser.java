@@ -1,4 +1,4 @@
-package org.example;
+package org.example.util;
 
 public class InputParser {
     public static double[] parseOperands(String input) {

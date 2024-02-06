@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.operation.Operation;
+import org.example.util.InputParser;
+import org.example.util.OperationFactory;
+
 public class Calculator {
     public double calculate(String input) {
         double[] operands = InputParser.parseOperands(input);

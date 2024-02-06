@@ -1,4 +1,6 @@
-import org.example.InputParser;
+package util;
+
+import org.example.util.InputParser;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

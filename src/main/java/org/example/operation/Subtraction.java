@@ -1,4 +1,6 @@
-package org.example;
+package org.example.operation;
+
+import org.example.operation.Operation;
 
 public class Subtraction implements Operation {
     @Override
