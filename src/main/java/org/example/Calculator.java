@@ -9,6 +9,7 @@ public class Calculator {
 
         switch (operator) {
             case "+" : return operand1 + operand2;
+            case "-" : return operand1 - operand2;
             default:
                 throw new IllegalArgumentException("Unsupported Operation");
         }
