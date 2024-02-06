@@ -22,4 +22,10 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertEquals(2, calculator.calculate("6 / 3"), "6 / 3 should be 2");
     }
+
+    @Test
+    public void testMultiplication() {
+        Calculator calculator = new Calculator();
+        assertEquals(15, calculator.calculate("3 * 5"), "3 * 5 should be 15");
+    }
 }
