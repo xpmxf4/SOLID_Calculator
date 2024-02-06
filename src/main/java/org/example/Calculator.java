@@ -7,13 +7,7 @@ public class Calculator {
         String operator = parts[1];
         double operand2 = Double.parseDouble(parts[2]);
 
-        switch (operator) {
-            case "+" : return operand1 + operand2;
-            case "-" : return operand1 - operand2;
-            case "/" : return operand1 / operand2;
-            case "*" : return operand1 * operand2;
-            default:
-                throw new IllegalArgumentException("Unsupported Operation");
-        }
+        Operation operation = OperationFactory.getOperation(operator);
+        return operation.calculate(operand1, operand2);
     }
 }
