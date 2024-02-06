@@ -16,4 +16,10 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertEquals(3, calculator.calculate("5 - 2"), "5 - 2 should be 3");
     }
+
+    @Test
+    public void testDivision() {
+        Calculator calculator = new Calculator();
+        assertEquals(2, calculator.calculate("6 / 3"), "6 / 3 should be 2");
+    }
 }
