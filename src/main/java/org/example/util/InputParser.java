@@ -2,9 +2,9 @@ package org.example.util;
 
 import org.example.dto.CalculateDto;
 
-public abstract class InputParserRefactor {
+public abstract class InputParser {
 
-    private InputParserRefactor() {}
+    private InputParser() {}
 
     public static CalculateDto parseCommandLine(String input) {
         String[] parts = input.split(" ");

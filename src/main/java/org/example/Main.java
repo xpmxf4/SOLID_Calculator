@@ -1,9 +1,9 @@
 package org.example;
 
 import org.example.dto.CalculateDto;
-import org.example.util.InputParserRefactor;
+import org.example.util.InputParser;
 
-public class MainRefactor {
+public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("사용 : java CalculatorApp \"<expression>\"");
@@ -13,7 +13,7 @@ public class MainRefactor {
 
 
         try {
-            CalculateDto calculateDto = InputParserRefactor.parseCommandLine(args[0]);
+            CalculateDto calculateDto = InputParser.parseCommandLine(args[0]);
             double result = calculateDto.calculate();
 
             System.out.println("계산 성공 = " + result);

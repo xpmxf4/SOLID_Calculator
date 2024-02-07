@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public enum CalculatorRefactor implements Operation {
+public enum Calculator implements Operation {
 
     ADDITION("+") {
         @Override
@@ -41,15 +41,15 @@ public enum CalculatorRefactor implements Operation {
         return operator;
     }
 
-    CalculatorRefactor(String operator) {
+    Calculator(String operator) {
         this.operator = operator;
     }
 
-    private static final Map<String, CalculatorRefactor> calculatorMap = Arrays.stream(values())
-            .collect(Collectors.toMap(CalculatorRefactor::getOperator, Function.identity()));
+    private static final Map<String, Calculator> calculatorMap = Arrays.stream(values())
+            .collect(Collectors.toMap(Calculator::getOperator, Function.identity()));
 
-    public static CalculatorRefactor getCalculator(String operator) {
-        CalculatorRefactor calculator = calculatorMap.get(operator);
+    public static Calculator getCalculator(String operator) {
+        Calculator calculator = calculatorMap.get(operator);
         if (calculator == null) throw new IllegalArgumentException("정의 되지 않은 연산입니다.");
         return calculator;
     }
