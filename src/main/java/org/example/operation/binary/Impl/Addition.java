@@ -1,6 +1,7 @@
-package org.example.operation.binary;
+package org.example.operation.binary.Impl;
 
 import org.example.operation.OperationType;
+import org.example.operation.binary.BinaryOperation;
 
 @OperationType("+")
 public class Addition implements BinaryOperation {
