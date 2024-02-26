@@ -3,9 +3,6 @@ package org.example.util;
 import org.example.operation.Operation;
 import org.example.operation.OperationType;
 import org.example.operation.binary.*;
-import org.example.operation.unary.Cos;
-import org.example.operation.unary.Sin;
-import org.example.operation.unary.Tan;
 import org.example.operation.unary.UnaryOperator;
 import org.reflections.Reflections;
 
@@ -20,19 +17,29 @@ public final class InputParser {
 
     private static final HashMap<String, Operation> OPERATION_MAP = new HashMap<>();
 
-    static {
-        // Reflections 라이브러리를 사용하여 @OperationType 애노테이션이 적용된 모든 클래스를 스캔
+    public static void initializeOperations() {
+        // Reflections를 사용하여 @OperationType 애노테이션이 적용된 모든 클래스를 스캔하고 초기화
         Reflections reflections = new Reflections("org.example.operation");
         Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(OperationType.class);
         for (Class<?> cls : annotated) {
             try {
                 OperationType operationAnnotation = cls.getAnnotation(OperationType.class);
-                OPERATION_MAP.put(operationAnnotation.value(), (Operation) cls.getDeclaredConstructor().newInstance());
+                Object instance = cls.getDeclaredConstructor().newInstance();
+
+                if (instance instanceof Operation operation) {
+                    OPERATION_MAP.put(operationAnnotation.value(), operation);
+                } else {
+                    System.err.println("Class " + cls.getName() + " does not implement Operation interface.");
+                }
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                      NoSuchMethodException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
             }
         }
+    }
+
+    static {
+        initializeOperations();
     }
 
 
