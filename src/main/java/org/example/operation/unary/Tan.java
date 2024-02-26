@@ -3,7 +3,7 @@ package org.example.operation.unary;
 import org.example.operation.OperationType;
 
 @OperationType("tan")
-public class Tan implements UnaryOperator{
+public class Tan implements UnaryOperation {
 
     @Override
     public double calculate(double operand1) {

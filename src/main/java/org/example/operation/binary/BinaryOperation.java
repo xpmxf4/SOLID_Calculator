@@ -2,7 +2,7 @@ package org.example.operation.binary;
 
 import org.example.operation.Operation;
 
-public interface BinaryOperator extends Operation {
+public interface BinaryOperation extends Operation {
 
     double calculate(double operand1, double operand2);
 }

@@ -3,8 +3,8 @@ package org.example.util;
 import org.example.dto.BinaryCalcDto;
 import org.example.dto.CalcDto;
 import org.example.dto.UnaryCalcDto;
-import org.example.operation.binary.BinaryOperator;
-import org.example.operation.unary.UnaryOperator;
+import org.example.operation.binary.BinaryOperation;
+import org.example.operation.unary.UnaryOperation;
 
 public final class Calculator {
 
@@ -17,7 +17,7 @@ public final class Calculator {
             double op1 = unaryCalcDto.operand();
             String operator = unaryCalcDto.operator();
 
-            return ((UnaryOperator) OperationRegistry.getOperation(operator))
+            return ((UnaryOperation) OperationRegistry.getOperation(operator))
                     .calculate(op1);
         }
 
@@ -26,7 +26,7 @@ public final class Calculator {
             double operand2 = binaryCalcDto.operand2();
             String operator = binaryCalcDto.operator();
 
-            return ((BinaryOperator) OperationRegistry.getOperation(operator))
+            return ((BinaryOperation) OperationRegistry.getOperation(operator))
                     .calculate(operand1, operand2);
         }
 

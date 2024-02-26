@@ -3,7 +3,7 @@ package org.example.operation.binary;
 import org.example.operation.OperationType;
 
 @OperationType("+")
-public class Addition implements BinaryOperator {
+public class Addition implements BinaryOperation {
 
     @Override
     public double calculate(double operand1, double operand2) {
