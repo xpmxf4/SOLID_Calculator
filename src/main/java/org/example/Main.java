@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.dto.CalculateDto;
 import org.example.util.InputParser;
 
 public class Main {
@@ -12,8 +11,7 @@ public class Main {
         }
 
         try {
-            CalculateDto calculateDto = InputParser.parseCommandLine(args[0]);
-            double result = calculateDto.calculate();
+            double result = InputParser.parseCommandLine(args[0]);
             System.out.println("계산 성공 = " + result);
         } catch (Exception e) {
             System.err.println("Error calculating the expression: " + e.getMessage());
