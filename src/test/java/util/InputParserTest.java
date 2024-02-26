@@ -1,6 +1,8 @@
 package util;
 
+import org.example.dto.CalculateDto;
 import org.example.util.InputParser;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,15 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class InputParserTest {
 
     @Test
+    @DisplayName("parsing 이 제대로 됐다면 계산도 제대로 된다.")
     void testParseOperandsForBinaryOperation() {
         String input = "3 + 5";
-        double[] expectedOperands = {3.0, 5.0};
-        assertArrayEquals(expectedOperands, InputParser.parseOperands(input), "Should correctly parse operands for binary operation");
+        CalculateDto calculateDto = InputParser.parseCommandLine(input);
+        double expectedRes = 8.0;
+
+        assertEquals(expectedRes, calculateDto.calculate(), "Should correctly parse operands for binary operation");
     }
 
-    @Test
-    void testParseOperatorForBinaryOperation() {
-        String input = "3 + 5";
-        assertEquals("+", InputParser.parseOperator(input), "Should correctly parse operator for binary operation");
-    }
 }
