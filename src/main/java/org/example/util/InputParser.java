@@ -1,13 +1,17 @@
 package org.example.util;
 
 import org.example.operation.Operation;
+import org.example.operation.OperationType;
 import org.example.operation.binary.*;
 import org.example.operation.unary.Cos;
 import org.example.operation.unary.Sin;
 import org.example.operation.unary.Tan;
 import org.example.operation.unary.UnaryOperator;
+import org.reflections.Reflections;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.Set;
 
 public final class InputParser {
 
@@ -17,14 +21,20 @@ public final class InputParser {
     private static final HashMap<String, Operation> OPERATION_MAP = new HashMap<>();
 
     static {
-        OPERATION_MAP.put("+", new Addition());
-        OPERATION_MAP.put("-", new Subtraction());
-        OPERATION_MAP.put("*", new Multiplication());
-        OPERATION_MAP.put("/", new Division());
-        OPERATION_MAP.put("sin", new Sin());
-        OPERATION_MAP.put("cos", new Cos());
-        OPERATION_MAP.put("tan", new Tan());
+        // Reflections 라이브러리를 사용하여 @OperationType 애노테이션이 적용된 모든 클래스를 스캔
+        Reflections reflections = new Reflections("org.example.operation");
+        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(OperationType.class);
+        for (Class<?> cls : annotated) {
+            try {
+                OperationType operationAnnotation = cls.getAnnotation(OperationType.class);
+                OPERATION_MAP.put(operationAnnotation.value(), (Operation) cls.getDeclaredConstructor().newInstance());
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                     NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 
     public static double parseCommandLine(String input) {
         String[] parts = input.split(" ");

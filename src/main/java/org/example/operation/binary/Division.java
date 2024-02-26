@@ -1,5 +1,8 @@
 package org.example.operation.binary;
 
+import org.example.operation.OperationType;
+
+@OperationType("/")
 public class Division implements BinaryOperator {
 
     @Override
