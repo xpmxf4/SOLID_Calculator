@@ -9,52 +9,37 @@
 프로젝트의 폴더 구조는 다음과 같습니다.
 
 ```bash
-.
-├── main
-│   ├── java
-│   │   └── org
-│   │       └── example
-│   │           ├── Calculator.java # 계산기 클래스입니다.
-│   │           ├── Main.java       # 애플리케이션의 시작입니다.
-│   │           ├── operation       # 연산 클래스가 위치합니다.
-│   │           └── util            # 입력 파싱, 팩토리 클래스가 위치합니다.
-│   └── resources
-└── test
-    ├── java
-    │   ├── CalculatorTest.java
-    │   └── util
-    │       └── InputParserTest.java
-    └── resources
+└── src
+    ├── main
+    │   └── java
+    │       └── org
+    │           └── example
+    │               ├── dto
+    │               ├── operation
+    │               └── util
+    └── test
+        └── java
+            └── org
+                └── example
+                    └── util
 
 ```
 
 
-## 작업 프로세스
+### dto 패키지
+이 패키지에는 데이터 전송 객체(Data Transfer Object) 클래스가 포함되어 있습니다.<br>
+이 클래스들은 계산을 위해 필요한 데이터를 전송하기 위해 사용됩니다.
 
-개발 과정은 TDD(Test-Driven Development) 방식으로 진행되었습니다. 
+### operation 패키지
+이 패키지에는 계산기에서 사용되는 모든 연산자와 관련된 클래스들이 포함되어 있습니다.
 
-각 기능에 대한 테스트 코드를 먼저 작성하고, 이를 통과하기 위한 실제 코드를 구현하는 순서로 작업이 진행되었습니다.
+```css
+Operation.java: 모든 연산자 클래스가 구현해야 하는 인터페이스입니다.
+OperationType.java: 연산자의 종류를 지정하는 애노테이션입니다.
+binary: 이항 연산자 클래스들이 있는 서브 패키지입니다.
+unary: 단항 연산자 클래스들이 있는 서브 패키지입니다.
+```
 
-## 기능 요구사항 분석
-
-### 기본 연산 (이번 스프린트)
-
-1. 덧셈 (Addition)
-2. 뺄셈 (Subtraction)
-3. 곱셈 (Multiplication)
-4. 나눗셈 (Division)
-
-### 삼각함수 (추후 개발)
-
-1. 사인 (Sine)
-2. 코사인 (Cosine)
-3. 탄젠트 (Tangent)
-
-### 미적분 (추후 개발)
-
-1. 적분 (Integration)
-2. 미분 (Differentiation)
-
-### 기타 연산 (추후 개발)
-
-1. 로그 함수 (Logarithm)
+### util 패키지
+이 패키지에는 계산기의 유틸리티 클래스들이 포함되어 있습니다.<br>
+이 클래스들은 계산기의 핵심 기능을 지원합니다.
